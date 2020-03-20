@@ -1,51 +1,51 @@
 # Scrape together total raised and spent for cycle
 from bs4 import BeautifulSoup
+
+import numpy as np
+import pandas as pd
+import re
 import requests
+
+def get_html_table_from_url(url):
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, "html.parser")
+    main_div = soup.findAll("div", {"class": "Main", "id": "main"})[0]
+    main_wrap_div = main_div.findAll("div", {"class": "Main-wrap l-padding u-mt2"})[0]
+    l_wrap_div = main_wrap_div.findAll("div", {"class": "l-wrap"})[0]
+    l_secondary_primary_div = l_wrap_div.findAll("div", {"class": "l-secondary-primary"})[0]
+    l_primary_div = l_secondary_primary_div.findAll("div", {"class": "l-primary"})[0]
+    l_rich_text_div = l_primary_div.findAll("div", {"class", "u-richtext u-mt4 u-mb4"})[0]
+    html_table = l_rich_text_div.findAll("table", {"class", "DataTable"})[0]
+
+    return html_table
+
+def get_df_from_html_table(html_table):
+    tbody = html_table.findAll("tbody")[0]
+    tr = html_table.findAll("tr")
+
+    column_names = ['Candidate', 'Raised', 'Spent', 'Cash on Hand', 'Last Report']
+    df = pd.DataFrame(columns = column_names)
+
+    for i in range(len(list(tr))):
+        row = list(tr)[i]
+        columns = row.findAll("td")
+        for j in range(len(list(columns))):
+            item = str(list(columns)[j])
+            item = re.sub(r'<td>', '', item)
+            item = re.sub(r'<td(.|\n)*?>', '', item)
+            item = re.sub(r'<\/td>', '', item)
+            item = item.strip()
+            df.at[i-1, column_names[j]] = item
+
+    return df
 
 state = "GA"
 district = "07"
 cycle = 2020
 
 url = "https://www.opensecrets.org/races/summary?cycle={}&id={}{}".format(cycle, state, district)
-
 print(url)
+html_table = get_html_table_from_url(url)
+df = get_df_from_html_table(html_table)
 
-page = requests.get(url)
-print(page)
-print("------------------------------------------")
-
-soup = BeautifulSoup(page.content, "html.parser")
-#print(soup.prettify())
-#for i in range(len(list(soup.children))):
-#    print(i, "           ", list(soup.children)[i])
-
-main = list(soup.children)[21]
-#print(main.name, main.class)
-#print(main.name == BeautifulSoup.element.Tag)
-#for i in range(len(list(main.children))):
-    #print(i, "           ", list(main.children)[i])
-
-main_div = soup.findAll("div", {"class": "Main", "id": "main"})[0]
-#print(len(main_div))
-#for i in range(len(list(main_div))):
-#    print(i, "         ", list(main_div)[i])
-
-main_wrap_div = main_div.findAll("div", {"class": "Main-wrap l-padding u-mt2"})[0]
-#print(main_wrap_div)
-#for i in range(len(list(main_wrap_div))):
-    #print(i, "         ", list(main_wrap_div)[i])
-l_wrap_div = main_wrap_div.findAll("div", {"class": "l-wrap"})[0]
-#print(l_wrap_div)
-l_secondary_primary = l_wrap_div.findAll("div", {"class": "l-secondary-primary"})[0]
-#for i in range(len(list(l_secondary_primary))):
-    #print(i, "         ", list(l_secondary_primary)[i])
-l_primary = l_secondary_primary.findAll("div", {"class": "l-primary"})[0]
-#print(l_primary)
-l_rich_text = l_primary.findAll("div", {"class", "u-richtext u-mt4 u-mb4"})[0]
-#print(l_rich_text)
-table = l_rich_text.findAll("table", {"class", "DataTable"})
-print(table)
-# for i in range(len(list(l_padding_div))):
-#     print(i, "         ", list(l_padding_div)[i])
-#l_wrap_div = l_padding_div.findAll("div", {"class": "l-wrap"})[0]
-#print(l_wrap_div)
+print(df)
