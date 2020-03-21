@@ -11,7 +11,7 @@ URL_ERROR = "This is an invalid congressional district or senate seat. Must use 
 def get_html_table_from_url(url):
     try:
         page = requests.get(url)
-        soup = BeautifulSoup(page.content, "html.parser")
+        soup = BeautifulSoup(page.content, "lxml")
         main_div = soup.findAll("div", {"class": "Main", "id": "main"})[0]
         main_wrap_div = main_div.findAll("div", {"class": "Main-wrap l-padding u-mt2"})[0]
         l_wrap_div = main_wrap_div.findAll("div", {"class": "l-wrap"})[0]
@@ -60,5 +60,3 @@ def summary_data(state, district, cycle):
     df = get_df_from_html_table(html_table)
 
     return df
-
-print(summary_data("MA", "04", 2020))
