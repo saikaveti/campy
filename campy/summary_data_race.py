@@ -54,7 +54,7 @@ def strip_tags(r, c, attribute):
 
     return attribute
 
-def summary_data(state, district, cycle):
+def summary_data_race(state, district, cycle):
     url = "https://www.opensecrets.org/races/summary?cycle={}&id={}{}".format(cycle, state, district)
     html_table = get_html_table_from_url(url)
     df = get_df_from_html_table(html_table)
