@@ -5,3 +5,6 @@ Complete:
 
 In progress:
 - Financial Summary for a candidate (Federal Election Commission)
+
+Future Work:
+- Search for Candidate's ID based on name (Federal Election Commission)
