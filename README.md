@@ -2,7 +2,7 @@ This is just starting out, but is supposed to serve as a python library that all
 
 Complete:
 - Summary Data for a race (Center for Responsive Politics)
-```python
+```
 >>> from summary_data_race import *
 >>> summary_data_race("GA", "07", 2020)
                   Candidate      Raised     Spent Cash on Hand Last Report
