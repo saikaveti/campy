@@ -28,9 +28,45 @@ Complete:
 3       Shiva Ayyadurai (I)     $56,324     $46,391      $10,285  12/31/2019
 ```
 
-In progress:
 - Financial Summary for a candidate (Federal Election Commission)
-
+```
+>>> from summary_data_individual import *
+>>> ids = ["H0MA04192", "S0DE00175", "S4MA00028"] # Jake Auchincloss, Jessica Scarane, and Ed Markey
+>>> total_spent_table(ids, 2020)
+                                           H0MA04192  S0DE00175      S4MA00028
+Total disbursements                       $63,618.84  $9,232.43  $4,950,669.22
+Operating expenditures                    $54,768.84  $8,962.43  $4,584,998.57
+Transfers to other authorized committees       $0.00      $0.00          $0.00
+Total contribution refunds                 $8,850.00    $270.00    $148,587.47
+Individual refunds                         $8,850.00    $270.00    $146,087.47
+Political party refunds                        $0.00      $0.00          $0.00
+Other committee refunds                        $0.00      $0.00      $2,500.00
+Total loan repayments                          $0.00      $0.00          $0.00
+Candidate loan repayments                      $0.00      $0.00          $0.00
+Other loan repayments                          $0.00      $0.00          $0.00
+Other disbursements                            $0.00      $0.00    $217,070.18
+>>> total_reciepts_table(ids, 2020)
+                                              H0MA04192   S0DE00175      S4MA00028
+Total receipts                              $617,918.21  $56,203.21  $7,273,783.80
+Total contributions                         $617,918.21  $56,203.21  $6,836,962.73
+Total individual contributions              $615,418.21  $54,097.60  $5,761,136.80
+Itemized individual contributions           $591,176.00  $29,130.20  $4,548,134.57
+Unitemized individual contributions          $24,242.21  $24,967.40  $1,212,993.23
+Party committee contributions                     $0.00       $0.00          $0.00
+Other committee contributions                 $2,500.00       $0.00  $1,075,825.93
+Candidate contributions                           $0.00   $2,105.61          $0.00
+Transfers from other authorized committees        $0.00       $0.00    $309,897.74
+Total loans received                              $0.00       $0.00          $0.00
+Loans made by candidate                           $0.00       $0.00          $0.00
+Other loans                                       $0.00       $0.00          $0.00
+Offsets to operating expenditures                 $0.00       $0.00     $62,059.50
+Other receipts                                    $0.00       $0.00     $64,857.83
+>>> cash_summary_table(ids, 2020)
+                                 H0MA04192   S0DE00175      S4MA00028
+Ending cash on hand            $554,299.37  $46,970.78  $4,550,451.01
+Debts/loans owed to committee        $0.00       $0.00          $0.00
+Debts/loans owed by committee        $0.00       $0.00          $0.00
+```
 Future Work:
 - Search for Candidate's ID based on name (Federal Election Commission)
 - Itemized spending and contributions (Federal Election Commission)
