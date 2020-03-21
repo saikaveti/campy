@@ -33,3 +33,5 @@ In progress:
 
 Future Work:
 - Search for Candidate's ID based on name (Federal Election Commission)
+- Itemized spending and contributions (Federal Election Commission)
+- Congressional contribution distributions based on type of donation (Center for Responsive Politics)
