@@ -60,4 +60,5 @@ def summary_data(state, district, cycle):
     df = get_df_from_html_table(html_table)
 
     return df
-    
+
+print(summary_data("MA", "04", 2020))
