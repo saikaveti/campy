@@ -68,6 +68,8 @@ Debts/loans owed to committee        $0.00       $0.00          $0.00
 Debts/loans owed by committee        $0.00       $0.00          $0.00
 ```
 Future Work:
+- Financial Summary for a PAC (Federal Election Commission)
+- Congressional contribution distributions based on type of donation (Center for Responsive Politics)
+- Congressional contribution distributions based on PAC breakdown (Center for Responsive Politics)
 - Search for Candidate's ID based on name (Federal Election Commission)
 - Itemized spending and contributions (Federal Election Commission)
-- Congressional contribution distributions based on type of donation (Center for Responsive Politics)
