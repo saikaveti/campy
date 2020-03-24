@@ -98,7 +98,3 @@ def cash_summary_table(ids, cycle):
             df.at[row[0], id] = row[1]
 
     return df
-
-print(total_reciepts_table(["C00503185"], 2020))
-print(total_spent_table(["C00503185"], 2020))
-print(cash_summary_table(["C00503185"], 2020))
