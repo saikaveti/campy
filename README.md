@@ -32,7 +32,7 @@ Complete:
 ```
 >>> from summary_data_individual import *
 >>> ids = ["H0MA04192", "S0DE00175", "S4MA00028"] # Jake Auchincloss, Jessica Scarane, and Ed Markey
->>> total_spent_table(ids, 2020)
+>>> total_spent_table_candidate(ids, 2020)
                                            H0MA04192  S0DE00175      S4MA00028
 Total disbursements                       $63,618.84  $9,232.43  $4,950,669.22
 Operating expenditures                    $54,768.84  $8,962.43  $4,584,998.57
@@ -45,7 +45,7 @@ Total loan repayments                          $0.00      $0.00          $0.00
 Candidate loan repayments                      $0.00      $0.00          $0.00
 Other loan repayments                          $0.00      $0.00          $0.00
 Other disbursements                            $0.00      $0.00    $217,070.18
->>> total_reciepts_table(ids, 2020)
+>>> total_reciepts_table_candidate(ids, 2020)
                                               H0MA04192   S0DE00175      S4MA00028
 Total receipts                              $617,918.21  $56,203.21  $7,273,783.80
 Total contributions                         $617,918.21  $56,203.21  $6,836,962.73
@@ -61,14 +61,53 @@ Loans made by candidate                           $0.00       $0.00          $0.
 Other loans                                       $0.00       $0.00          $0.00
 Offsets to operating expenditures                 $0.00       $0.00     $62,059.50
 Other receipts                                    $0.00       $0.00     $64,857.83
->>> cash_summary_table(ids, 2020)
+>>> cash_summary_table_candidate(ids, 2020)
                                  H0MA04192   S0DE00175      S4MA00028
 Ending cash on hand            $554,299.37  $46,970.78  $4,550,451.01
 Debts/loans owed to committee        $0.00       $0.00          $0.00
 Debts/loans owed by committee        $0.00       $0.00          $0.00
 ```
-Future Work:
 - Financial Summary for a PAC (Federal Election Commission)
+```
+>>> from summary_data_committee import *
+>>> ids = ["C00503185", "C00331769"] # Ro for Congress and Barbara Lee for Congress
+>>> total_reciepts_table_race(ids, 2020)
+                                                C00503185    C00331769
+Total receipts                              $2,259,081.59  $986,918.73
+Total contributions                         $2,251,636.71  $956,611.24
+Total individual contributions              $2,251,636.71  $701,761.24
+Itemized individual contributions           $2,073,207.95  $507,988.38
+Unitemized individual contributions           $178,428.76  $193,772.86
+Party committee contributions                       $0.00        $0.00
+Other committee contributions                       $0.00  $254,850.00
+Candidate contributions                             $0.00        $0.00
+Transfers from other authorized committees          $0.00        $0.00
+Total loans received                                $0.00        $0.00
+Loans made by candidate                             $0.00        $0.00
+Other loans                                         $0.00        $0.00
+Offsets to operating expenditures               $4,703.03   $30,307.49
+Other receipts                                  $2,741.85        $0.00
+>>> total_spent_table_race(ids, 2020)
+                                              C00503185    C00331769
+Total disbursements                       $1,373,189.46  $948,612.62
+Operating expenditures                    $1,253,629.19  $742,107.26
+Transfers to other authorized committees          $0.00        $0.00
+Total contribution refunds                   $37,115.75    $3,195.36
+Individual refunds                           $37,115.75    $3,195.36
+Political party refunds                           $0.00        $0.00
+Other committee refunds                           $0.00        $0.00
+Total loan repayments                             $0.00        $0.00
+Candidate loan repayments                         $0.00        $0.00
+Other loan repayments                             $0.00        $0.00
+Other disbursements                          $82,444.52  $203,310.00
+>>> cash_summary_table_race(ids, 2020)
+                                   C00503185    C00331769
+Beginning cash on hand           $878,603.52  $132,303.44
+Ending cash on hand            $1,764,495.65  $170,609.55
+Debts/loans owed to committee          $0.00        $0.00
+Debts/loans owed by committee    $101,738.30    $4,401.75
+```
+Future Work:
 - Congressional contribution distributions based on type of donation (Center for Responsive Politics)
 - Congressional contribution distributions based on PAC breakdown (Center for Responsive Politics)
 - Search for Candidate's ID based on name (Federal Election Commission)

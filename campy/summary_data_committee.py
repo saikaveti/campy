@@ -57,7 +57,7 @@ def convert_row(row):
 
     return row
 
-def total_reciepts_table(ids, cycle):
+def total_reciepts_table_race(ids, cycle):
     index = ['Total receipts', 'Total contributions', 'Total individual contributions', 'Itemized individual contributions', 'Unitemized individual contributions', 'Party committee contributions', 'Other committee contributions', 'Candidate contributions', 'Transfers from other authorized committees', 'Total loans received', 'Loans made by candidate', 'Other loans', 'Offsets to operating expenditures', 'Other receipts']
     df = pd.DataFrame(index=index, columns=ids)
     for id in ids:
@@ -71,7 +71,7 @@ def total_reciepts_table(ids, cycle):
 
     return df
 
-def total_spent_table(ids, cycle):
+def total_spent_table_race(ids, cycle):
     index = ['Total disbursements', 'Operating expenditures', 'Transfers to other authorized committees', 'Total contribution refunds', 'Individual refunds', 'Political party refunds', 'Other committee refunds', 'Total loan repayments', 'Candidate loan repayments', 'Other loan repayments', 'Other disbursements']
     df = pd.DataFrame(index=index, columns=ids)
     for id in ids:
@@ -85,7 +85,7 @@ def total_spent_table(ids, cycle):
 
     return df
 
-def cash_summary_table(ids, cycle):
+def cash_summary_table_race(ids, cycle):
     index = ['Beginning cash on hand', 'Ending cash on hand', 'Debts/loans owed to committee', 'Debts/loans owed by committee']
     df = pd.DataFrame(index=index, columns=ids)
     for id in ids:
