@@ -107,8 +107,19 @@ Ending cash on hand            $1,764,495.65  $170,609.55
 Debts/loans owed to committee          $0.00        $0.00
 Debts/loans owed by committee    $101,738.30    $4,401.75
 ```
-Future Work:
 - Congressional contribution distributions based on type of donation (Center for Responsive Politics)
+```
+>>> from contribution_distributions import *
+>>> ids = ["N00038858", "N00026686"] # Pramila Jayapal and Al Green
+>>> source_of_funds_distribution(ids, 2020)
+                                        N00038858 N00026686
+Large Individual Contributions             65.44%    37.31%
+Small Individual Contributions (< $200)    20.50%     7.48%
+PAC Contributions                          13.39%    55.21%
+Other                                       0.64%    -0.07%
+Candidate self-financing                    0.01%     0.00%
+```
+Future Work:
 - Congressional contribution distributions based on PAC breakdown (Center for Responsive Politics)
 - Search for Candidate's ID based on name (Federal Election Commission)
 - Itemized spending and contributions (Federal Election Commission)
