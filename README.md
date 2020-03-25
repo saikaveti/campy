@@ -27,7 +27,13 @@ Complete:
 2  Shannon Liss-Riordan (D)  $3,234,569    $808,693   $2,425,876  12/31/2019
 3       Shiva Ayyadurai (I)     $56,324     $46,391      $10,285  12/31/2019
 ```
-
+- Retrieve the IDs for Representatives in the 115th Congress by State (Center for Responsive Politics)
+```
+>>> from id_query import *
+>>> states = ["MA", "RI"]
+>>> get_ids_for_states(states)
+{'N00000153': 'Richard E Neal', 'N00000179': 'James P McGovern', 'N00029026': 'Niki Tsongas', 'N00034044': 'Joe Kennedy III', 'N00035278': 'Katherine Clark', 'N00035431': 'Seth Moulton', 'N00000267': 'Michael E Capuano', 'N00013855': 'Stephen F Lynch', 'N00031933': 'Bill Keating', 'N00033492': 'Elizabeth Warren', 'N00000270': 'Ed Markey', 'N00032019': 'David Cicilline', 'N00009724': 'Jim Langevin', 'N00027533': 'Sheldon Whitehouse', 'N00000362': 'Jack Reed'}
+```
 - Financial Summary for a candidate (Federal Election Commission)
 ```
 >>> from summary_data_individual import *
@@ -128,13 +134,6 @@ Candidate self-financing                           $200        $0
 Labor              $136,800  $84,500
 Business            $29,250  $46,300
 Ideological         $27,500   $1,000
-```
-- Retrieve the IDs for Representatives in the 115th Congress by State
-```
->>> from id_query import *
->>> states = ["MA", "RI"]
->>> get_ids_for_states(states)
-{'N00000153': 'Richard E Neal', 'N00000179': 'James P McGovern', 'N00029026': 'Niki Tsongas', 'N00034044': 'Joe Kennedy III', 'N00035278': 'Katherine Clark', 'N00035431': 'Seth Moulton', 'N00000267': 'Michael E Capuano', 'N00013855': 'Stephen F Lynch', 'N00031933': 'Bill Keating', 'N00033492': 'Elizabeth Warren', 'N00000270': 'Ed Markey', 'N00032019': 'David Cicilline', 'N00009724': 'Jim Langevin', 'N00027533': 'Sheldon Whitehouse', 'N00000362': 'Jack Reed'}
 ```
 Future Work:
 - Search for Candidate's ID (Center for Responsive Politics)
