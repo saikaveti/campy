@@ -13,10 +13,8 @@ def get_ids_for_states(states):
         content = page.content
         parsed = json.loads(content)
         legislators = parsed["response"]["legislator"]
-        #print(legislators)
         for legislator in legislators:
             attributes = legislator["@attributes"]
-            #print(json.dumps(attributes, indent=4, sort_keys=True))
             ids[attributes["cid"]] = attributes["firstlast"]
 
     return ids
