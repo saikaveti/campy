@@ -119,7 +119,16 @@ PAC Contributions                        $187,000  $114,000
 Other                                      $8,934     -$165
 Candidate self-financing                     $200        $0
 ```
-Future Work:
 - Congressional contribution distributions based on PAC breakdown (Center for Responsive Politics)
+```
+>>> from contribution_distributions import *
+>>> ids = ["N00038858", "N00026686"] # Pramila Jayapal and Al Green
+>>> pac_contribution_distribution(ids, 2020)
+            N00038858 N00026686
+Labor        $136,800   $84,500
+Business      $29,250   $46,300
+Ideological   $27,500    $1,000
+```
+Future Work:
 - Search for Candidate's ID based on name (Federal Election Commission)
 - Itemized spending and contributions (Federal Election Commission)
