@@ -60,42 +60,42 @@ def convert_row(row):
 
 def total_reciepts_table_candidate(ids, cycle):
     index = ['Total receipts', 'Total contributions', 'Total individual contributions', 'Itemized individual contributions', 'Unitemized individual contributions', 'Party committee contributions', 'Other committee contributions', 'Candidate contributions', 'Transfers from other authorized committees', 'Total loans received', 'Loans made by candidate', 'Other loans', 'Offsets to operating expenditures', 'Other receipts']
-    df = pd.DataFrame(index=index, columns=ids)
-    for id in ids:
+    df = pd.DataFrame(index=index, columns=ids.values())
+    for id in ids.keys():
         url = "https://www.fec.gov/data/candidate/{}/?cycle={}&election_full=true".format(id, cycle)
         slab_div = get_slab_div(url)
         html_table = get_total_reciepts_html_table(slab_div)
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[1]
+            df.at[row[0], ids[id]] = row[1]
 
     return df
 
 def total_spent_table_candidate(ids, cycle):
     index = ['Total disbursements', 'Operating expenditures', 'Transfers to other authorized committees', 'Total contribution refunds', 'Individual refunds', 'Political party refunds', 'Other committee refunds', 'Total loan repayments', 'Candidate loan repayments', 'Other loan repayments', 'Other disbursements']
-    df = pd.DataFrame(index=index, columns=ids)
-    for id in ids:
+    df = pd.DataFrame(index=index, columns=ids.values())
+    for id in ids.keys():
         url = "https://www.fec.gov/data/candidate/{}/?cycle={}&election_full=true".format(id, cycle)
         slab_div = get_slab_div(url)
         html_table = get_total_spent_html_table(slab_div)
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[1]
+            df.at[row[0], ids[id]] = row[1]
 
     return df
 
 def cash_summary_table_candidate(ids, cycle):
     index = ['Ending cash on hand', 'Debts/loans owed to committee', 'Debts/loans owed by committee']
-    df = pd.DataFrame(index=index, columns=ids)
-    for id in ids:
+    df = pd.DataFrame(index=index, columns=ids.values())
+    for id in ids.keys():
         url = "https://www.fec.gov/data/candidate/{}/?cycle={}&election_full=true".format(id, cycle)
         slab_div = get_slab_div(url)
         html_table = get_cash_summary_html_table(slab_div)
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[1]
+            df.at[row[0], ids[id]] = row[1]
 
     return df

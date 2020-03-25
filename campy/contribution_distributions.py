@@ -53,28 +53,28 @@ def convert_row(row):
 
 def source_of_funds_distribution(ids, cycle):
     index = ['Large Individual Contributions', 'Small Individual Contributions (< $200)', 'PAC Contributions', 'Other', 'Candidate self-financing']
-    df = pd.DataFrame(index=index, columns=ids)
-    for id in ids:
+    df = pd.DataFrame(index=index, columns=ids.values())
+    for id in ids.keys():
         url = "https://www.opensecrets.org/members-of-congress/summary?cid={}&cycle={}".format(id, cycle)
         html_table = get_source_html_table_from_url(url)
         tbody = html_table.findAll("tbody")[0]
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[1]
+            df.at[row[0], ids[id]] = row[1]
 
     return df
 
 def pac_contribution_distribution(ids, cycle):
     index = ['Labor', 'Business', 'Ideological']
-    df = pd.DataFrame(index = index, columns = ids)
-    for id in ids:
+    df = pd.DataFrame(index = index, columns = ids.values())
+    for id in ids.keys():
         url = "https://www.opensecrets.org/members-of-congress/pacs?cid={}&cycle={}".format(id, cycle)
         html_table = get_pac_html_table_from_url(url)
         tbody = html_table.findAll("tbody")[0]
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[1]
+            df.at[row[0], ids[id]] = row[1]
 
     return df
