@@ -5,7 +5,7 @@ import pandas as pd
 import re
 import requests
 
-def get_html_table_from_url(url):
+def get_source_html_table_from_url(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "lxml")
     body = soup.findAll("body")[0]
@@ -19,6 +19,9 @@ def get_html_table_from_url(url):
     html_table = stacked_bar_div.findAll("table")[0]
 
     return html_table
+
+def get_pac_html_table_from_url(url):
+    pass
 
 def convert_row(row):
     columns = row.findAll("td")
@@ -40,11 +43,14 @@ def source_of_funds_distribution(ids, cycle):
     df = pd.DataFrame(index=index, columns=ids)
     for id in ids:
         url = "https://www.opensecrets.org/members-of-congress/summary?cid={}&cycle={}".format(id, cycle)
-        html_table = get_html_table_from_url(url)
+        html_table = get_source_html_table_from_url(url)
         tbody = html_table.findAll("tbody")[0]
         rows_scrape = html_table.findAll("tr")
         rows_for_id = [convert_row(row) for row in rows_scrape]
         for row in rows_for_id:
-            df.at[row[0], id] = row[2]
+            df.at[row[0], id] = row[1]
 
     return df
+
+# def pac_contribution_distribution(ids, cycle):
+#     index = ['Labor', 'Business', ]

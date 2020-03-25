@@ -113,11 +113,11 @@ Debts/loans owed by committee    $101,738.30    $4,401.75
 >>> ids = ["N00038858", "N00026686"] # Pramila Jayapal and Al Green
 >>> source_of_funds_distribution(ids, 2020)
                                         N00038858 N00026686
-Large Individual Contributions             65.44%    37.31%
-Small Individual Contributions (< $200)    20.50%     7.48%
-PAC Contributions                          13.39%    55.21%
-Other                                       0.64%    -0.07%
-Candidate self-financing                    0.01%     0.00%
+Large Individual Contributions           $913,625   $77,050
+Small Individual Contributions (< $200)  $286,339   $15,451
+PAC Contributions                        $187,000  $114,000
+Other                                      $8,934     -$165
+Candidate self-financing                     $200        $0
 ```
 Future Work:
 - Congressional contribution distributions based on PAC breakdown (Center for Responsive Politics)
