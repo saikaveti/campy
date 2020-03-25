@@ -130,5 +130,5 @@ Business            $29,250  $46,300
 Ideological         $27,500   $1,000
 ```
 Future Work:
-- Search for Candidate's ID based on name (Federal Election Commission)
+- Search for Candidate's ID (Center for Responsive Politics)
 - Itemized spending and contributions (Federal Election Commission)
