@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 
 import numpy as np
 import pandas as pd
+import time
 import re
 import requests
 
@@ -18,6 +19,7 @@ def get_source_html_table_from_url(url):
         graphic_div = l_primary_div.findAll("div", {"class": "HorizontalStackedBar"})[0]
         stacked_bar_div = graphic_div.findAll("div", {"class": "HorizontalStackedBar--legend u-richtext u-mt4 u-mb4", "style": ""})[0]
         html_table = stacked_bar_div.findAll("table")[0]
+        time.sleep(1)
         return html_table
     except:
         return None
@@ -36,6 +38,7 @@ def get_pac_html_table_from_url(url):
         graphic_div = column_div.findAll("div", {"class": "HorizontalStackedBar"})[0]
         stacked_bar_div = graphic_div.findAll("div", {"class": "HorizontalStackedBar--legend u-richtext u-mt4 u-mb4", "style": ""})[0]
         html_table = stacked_bar_div.findAll("table")[0]
+        time.sleep(1)
         return html_table
     except:
         return None
