@@ -6,19 +6,22 @@ import re
 import requests
 
 def get_source_html_table_from_url(url):
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, "lxml")
-    body = soup.findAll("body")[0]
-    main_div = body.findAll("div", {"class": "Main", "id": "main", "role": "main"})[0]
-    main_wrap_div = main_div.findAll("div", {"class": "Main-wrap l-padding u-mt2"})[0]
-    l_wrap_div = main_wrap_div.findAll("div", {"class": "l-wrap"})[0]
-    l_primary_secondary_div = l_wrap_div.findAll("div", {"class": "l-primary-secondary"})[0]
-    l_primary_div = l_primary_secondary_div.findAll("div", {"class": "l-primary"})[0]
-    graphic_div = l_primary_div.findAll("div", {"class": "HorizontalStackedBar"})[0]
-    stacked_bar_div = graphic_div.findAll("div", {"class": "HorizontalStackedBar--legend u-richtext u-mt4 u-mb4", "style": ""})[0]
-    html_table = stacked_bar_div.findAll("table")[0]
+    try:
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "lxml")
+        body = soup.findAll("body")[0]
+        main_div = body.findAll("div", {"class": "Main", "id": "main", "role": "main"})[0]
+        main_wrap_div = main_div.findAll("div", {"class": "Main-wrap l-padding u-mt2"})[0]
+        l_wrap_div = main_wrap_div.findAll("div", {"class": "l-wrap"})[0]
+        l_primary_secondary_div = l_wrap_div.findAll("div", {"class": "l-primary-secondary"})[0]
+        l_primary_div = l_primary_secondary_div.findAll("div", {"class": "l-primary"})[0]
+        graphic_div = l_primary_div.findAll("div", {"class": "HorizontalStackedBar"})[0]
+        stacked_bar_div = graphic_div.findAll("div", {"class": "HorizontalStackedBar--legend u-richtext u-mt4 u-mb4", "style": ""})[0]
+        html_table = stacked_bar_div.findAll("table")[0]
 
-    return html_table
+        return html_table
+    except:
+        raise ValueError(url)
 
 def get_pac_html_table_from_url(url):
     page = requests.get(url)
@@ -64,6 +67,9 @@ def source_of_funds_distribution(ids, cycle):
             df.at[row[0], ids[id]] = row[1]
 
     return df
+
+def source_of_funds_distribution2(ids, cycle):
+
 
 def pac_contribution_distribution(ids, cycle):
     index = ['Labor', 'Business', 'Ideological']
