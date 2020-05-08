@@ -1,6 +1,5 @@
-This is just starting out, but is supposed to serve as a python library that allows you to query OpenSecrets information regarding fundraising as well as the FEC for itemized contribution records.
+Serve as a python library that allows you to query OpenSecrets information and the FEC regarding fundraising. For futher information, check out the OpenSecrets API.
 
-Complete:
 - Summary Data for a race (Center for Responsive Politics)
 ```
 >>> from summary_data_race import *
@@ -135,6 +134,3 @@ Labor              $136,800  $84,500
 Business            $29,250  $46,300
 Ideological         $27,500   $1,000
 ```
-Future Work:
-- Search for Candidate's ID (Center for Responsive Politics)
-- Itemized spending and contributions (Federal Election Commission)
