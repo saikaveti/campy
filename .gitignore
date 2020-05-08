@@ -1,3 +1,4 @@
 __pycache__
 API_KEY.txt
 examples/*
+.ipynb_checkpoints
